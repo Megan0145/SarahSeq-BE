@@ -1,10 +1,13 @@
 const router = require("express").Router();
 const users = require("./auth-model");
+const bcrypt = require("bcryptjs");
 
 router.post("/register", (req, res) => {
+  const hashpw = bcrypt.hashSync(req.body.password, 10);
+
   const newUser = {
     username: req.body.username,
-    password: req.body.password
+    password: hashpw
   };
 
   users

@@ -10,7 +10,7 @@ server.use(express.json());
 
 const authRouter = require("../authentication/auth-router");
 
-server.use("/api/users", authRouter);
+server.use("/api/auth", authRouter);
 
 server.get("/", (req, res) => {
   res.send("Up and running!");
