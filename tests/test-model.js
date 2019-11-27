@@ -13,5 +13,5 @@ function getUserTests(id) {
     .join("user_tests as ut", "ut.user_id", "u.id")
     .join("tests as t", "ut.test_id", "t.id")
     .select("u.id as user_id", "u.username", "t.test_name" )
-    .where({user_id: id })
+    .where({ user_id: id })
 }

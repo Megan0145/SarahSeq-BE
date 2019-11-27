@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const userTests = require("../tests/test-model");
+const restricted = require("../middleware/restricted")
 
-router.get("/:id/tests", (req, res) => {
-    const { id } = req.params;
+router.get("/tests", restricted, (req, res) => {
+    const id = req.decodedToken.subject;
     userTests.getUserTests(id)
     .then(tests => {
         res.status(200).json(tests)
